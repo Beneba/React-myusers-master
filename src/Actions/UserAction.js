@@ -1,0 +1,71 @@
+export const ADD_USER = "ADD_USER";
+export const EDIT_USER = "EDIT_USER";
+export const DELETE_USER = "DELETE_USER";
+
+export const addUser = (user) => {
+  // user.id = Math.random().toString();
+
+  // return({
+  //     type: "ADD_USER",
+  //     payload: user,
+  //   });
+
+  console.log("addUser", user)
+
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .add(user)
+      .then((docs) => {
+        dispatch({
+          type: "ADD_USER",
+          payload: user,
+         });
+
+
+        console.log(docs);
+      }).catch(error => console.log(error));
+  };
+};
+
+export const DeleteUser = (id) => {
+  return {
+    type: "DELETE_USER",
+    payload: id,
+  };
+};
+
+export const EditUser = (user_id, updatedUser) => {
+  updatedUser.id = Math.random().toString();
+
+  return {
+    type: "EDIT_USER",
+    user_id: user_id,
+    updatedUser: updatedUser,
+  };
+};
+
+export const getAllUsers = () => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("users")
+      .onSnapshot((snapshot) => {
+        let users = []
+        snapshot.forEach((doc) => {
+          users.push({ ...doc.data(), id: doc.id }); // Adding id from firebase that gets added when we add the user
+        });
+        
+        
+        dispatch({
+          type: "SET_ALL_USERS",
+          paylaod: users,
+        }); 
+        
+      },
+      (err) => {
+
+      }
+      );
+  };
+};
+  
