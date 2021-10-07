@@ -1,26 +1,6 @@
 
 const initialState = {
-  users: [
-    {
-      name: "Bless Afetsi",
-      email: "bless@email.com",
-      gen: 2,
-      id: "i4345mnf",
-    },
-    {
-      name: "Ahmed zaky",
-      email: "zak@email.com",
-      gen: 13,
-      id: "brn2n54y",
-    },
-
-    {
-      name: "Awal Mubarack",
-      email: "awal@email.com",
-      gen: 2,   
-      id: "ir456k2i",
-    },
-  ],
+  users: [ ],
 };
 
 const UsersReducer = (state = initialState, action) => {
