@@ -40,9 +40,6 @@ class EdithUserForm extends Component {
         <>
 
       <Form onSubmit={this.handleSubmit}>
-        <Form.Text>
-          <h1>Add Details Here </h1>
-        </Form.Text>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name </Form.Label>
           <Form.Control

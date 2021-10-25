@@ -22,9 +22,9 @@ const Users = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  
+  console.log(state);
   return{
-    users:state.users
+    users:state.usersState.users,
   }
 }
 
